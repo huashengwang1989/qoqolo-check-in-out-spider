@@ -1,6 +1,8 @@
 # qoqolo-check-in-out-spider
 
-This is a small python spider to extract the check-in check-out photos from Qoqolo system for your account.
+This is a small python spider to extract the check-in check-out photos from [Qoqolo](https://www.qoqolo.com) Student system for your account.
+
+> This is not for Qoqolo Teachers.
 
 ## Kick-start
 
@@ -83,6 +85,10 @@ You should expect daily check-in/out image files saved to the folder that you ha
 
 This script is for personal use, and has no affliation with Qoqolo nor PCF Spartletots Pre-school.
 
-This script is equivilant to how you will do to manually open each month and each day's pop-up to save the images one by one. It will not create additional traffic to Qoqolo's server. It will not, and it cannot access to other people's account for other kids' images, as it is purely based on the information retrievable from your account only.
+This script is equivilant to what you need do to manually open each month and each day's pop-up to save the images one by one. It will not create additional traffic to Qoqolo's server. It will not, and it cannot access to other people's account for other kids' images, as it is purely based on the information retrievable from your student account only.
 
-Please refrain from using this script to perform other jobs, other than retreiving daily check-in-out images for your kids.
+Please refrain from using this script to perform other jobs, other than retreiving daily check-in-out images for your kids for archiving purpose.
+
+## Linked Project
+
+You may checkout [photobook](https://github.com/huashengwang1989/photobook) project if you wish to generate calendar images for e.g. a photobook, with the extracted check-in-out images from this project.
