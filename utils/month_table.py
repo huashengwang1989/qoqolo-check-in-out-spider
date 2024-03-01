@@ -75,7 +75,7 @@ def get_table_rows(url: str, headers, cookies):
                         'button_id': button_cell.attrs['_id'],
                         'idx': int(row_data[0]) - 1,
                         'date': date,
-                        'drop_ts': row_data[1],
+                        'drop_ts': drop_ts,
                         'drop_person': row_data[2] if drop_comment == '' else remove_suffix(row_data[2], drop_comment),
                         'drop_comment': drop_comment,
                         'pick_ts': pick_ts,
