@@ -1,3 +1,6 @@
+# Personal Configs Omitted for Privacy
+config_personal.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
