@@ -85,9 +85,18 @@ def get_table_rows(url: str, headers, cookies):
                     result_array.append(daily_info)
             return result_array
         else:
-            # If no table is found, return an empty array
-            return result_array
+            login = soup.find('div', { 'class': 'lo-user' })
+            if login:
+                print(f"> {c.FAIL}Seems to redirect to login. May check your cookie in your configuration.{c.ENDC}")
+                raise Exception('expired-or-wrong-cookie')
+            else:
+                # If no table is found, return an empty array
+                return result_array
+            
     
     except requests.exceptions.RequestException as e:
-        print(f"> {c.FAIL}Error retrieving table information for \"{url}\": {e}{c.ENDC}")
-        return result_array
+        if str(e) != 'expired-or-wrong-cookie':
+            print(f"> {c.FAIL}Error retrieving table information for \"{url}\": {e}{c.ENDC}")
+            return result_array
+        else:
+            raise Exception('expired-or-wrong-cookie')

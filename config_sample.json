@@ -1,9 +1,6 @@
 {
     "cookies": {
-        "SALTSESS": "abcdefghijklmnopqrstuvwxyz",
-        "__utma": "1234567.987654321.1234567890.1234567890.1234567890.1",
-        "__utmc": "1234567",
-        "__utmz": "1234567.1234567890.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)"
+        "SALTSESS": "abcdefghijklmnopqrstuvwxyz"
     },
     "recentCheckInOutLink": "https://pcfsparkletots.qoqolo.com/cos/o.x?c=/abcd_efg/check_in&func=recent",
     "startYearMonth": "2024-01",

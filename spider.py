@@ -58,7 +58,9 @@ class MonthUrlInfo(TypedDict):
 if is_valid_url(recent_inout_link):
     hotname = get_hostname_from_url(recent_inout_link)
     month_urls: list[MonthUrlInfo] = []
-    print(f"> {c.OKBLUE}Will retrieve info for the following {month_years.__len__()} pages:{c.ENDC}")
+    mon_len = month_years.__len__()
+    page_log_text = 'page' if mon_len == 1 else 'pages'
+    print(f"> {c.OKBLUE}Will retrieve info for the following {mon_len} {page_log_text}:{c.ENDC}")
     for mon_yr in month_years:
         selected_date_params: dict[str, str] = {"func": "recent", "selectDate": mon_yr}
         new_url_month = add_query_params(recent_inout_link, selected_date_params)
@@ -81,26 +83,29 @@ if is_valid_url(recent_inout_link):
         # --- Get Image Links from individual View Check-in Page ---
         # ...&func=view_checkin&type=students&output=ajax&rid=<button_id>&selectDate=<yyyy_mm_dd>
 
-        for row_info in rows_of_month:
-            print(f">>> {row_info['date']}: rid - {row_info['button_id']}")
+        if rows_of_month.__len__() > 0:
+            for row_info in rows_of_month:
+                print(f">>> {row_info['date']}: rid - {row_info['button_id']}")
 
-            indv_date_params: dict[str, str] = {
-                "func": "view_checkin",
-                "type": "students",
-                "output": "ajax",
-                "rid": row_info['button_id'],
-                "selectDate": row_info['date'],
-            }
-            url_of_day = add_query_params(recent_inout_link, indv_date_params)
+                indv_date_params: dict[str, str] = {
+                    "func": "view_checkin",
+                    "type": "students",
+                    "output": "ajax",
+                    "rid": row_info['button_id'],
+                    "selectDate": row_info['date'],
+                }
+                url_of_day = add_query_params(recent_inout_link, indv_date_params)
 
-            img_srcs = get_img_srcs(url_of_day, row_info['date'], hotname, headers, cookies)
-            download_and_save_images(img_srcs, output_root_folder_dir, yr_mon, headers, cookies)
-        
-        create_csv_from_dicts(rows_of_month, os.path.join(output_root_folder_dir, yr_mon), yr_mon)
+                img_srcs = get_img_srcs(url_of_day, row_info['date'], hotname, headers, cookies)
+                download_and_save_images(img_srcs, output_root_folder_dir, yr_mon, headers, cookies)
             
-        print("")
-        print(f">>> {c.OKBLUE}CSV for {yr_mon} is generated.{c.ENDC}")
-        print("")
+            create_csv_from_dicts(rows_of_month, os.path.join(output_root_folder_dir, yr_mon), yr_mon)
+            
+            print("")
+            print(f">>> {c.OKBLUE}CSV for {yr_mon} is generated.{c.ENDC}")
+            print("")
+        else:
+            print(f">>> {c.FAIL}{yr_mon} has no data.{c.ENDC}")
 
 else:
     print(f"> {c.FAIL}Invalid URL: \"{recent_inout_link}\".{c.ENDC}")

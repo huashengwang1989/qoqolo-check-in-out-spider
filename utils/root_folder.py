@@ -24,6 +24,8 @@ def get_root_folder_dir(dir_from_config: str):
         # Create the directory
         os.makedirs(output_root_folder_dir)
         print(f"> {c.OKGREEN}Directory created successfully for \"{output_root_folder_dir}\".{c.ENDC}")
+        if output_folder_name_cnt > 0:
+            print(f"> {c.FAIL}Note that directory {c.BOLD}\"{output_root_folder_dir}\"{c.ENDC}{c.FAIL} is different from your configuration as \"{original_output_root_folder_dir}\" already exists.{c.ENDC}")
         return output_root_folder_dir
     else:
         # This should not happen after the while above
